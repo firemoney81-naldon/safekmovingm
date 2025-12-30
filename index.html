@@ -1,23 +1,567 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+    <!-- Schema.org JSON-LD (WebPage, BreadcrumbList) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "군산포장이사 전문 업체 비교 및 견적 서비스",
+          "url": "https://example.com/gunsan-moving",
+          "description": "군산 지역 고객 맞춤형 포장이사 견적 비교. 2026년 이사 비용 절약 노하우와 믿을 수 있는 업체 선정 가이드 제공.",
+          "provider": {
+            "@type": "Organization",
+            "name": "군산이사비교센터"
+          },
+          "lastReviewed": "2025-11-01"
+        }
+    </script>
+
+    <!-- Schema.org JSON-LD (FAQPage) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "군산포장이사 비용은 어떤 요인에 의해 결정되나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "이사 비용은 짐의 양(평수/톤), 이사 거리, 작업 인원 수, 옵션 서비스(에어컨 탈부착, 청소), 이사 날짜(손 없는 날/주말 여부) 등에 따라 달라집니다. 특히 2026년에는 인건비와 유류비 변동에 따라 비용이 상승할 수 있어 사전 견적이 중요합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "포장이사, 반포장이사, 일반이사의 차이점은 무엇인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "포장이사는 모든 짐의 포장과 정리를 업체가 전담하여 고객의 편의성이 가장 높습니다. 반포장이사는 짐 포장은 업체가, 짐 정리는 고객이 담당합니다. 일반이사는 짐 포장 및 정리를 모두 고객이 직접 하고, 업체는 운반만 담당하는 서비스입니다. 비용은 포장이사 > 반포장이사 > 일반이사 순입니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "군산 지역에서 이사하기 좋은 시기는 언제인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "이사 수요가 적은 비수기인 1~2월, 7~8월이 상대적으로 저렴합니다. 또한, 손 없는 날을 피하고 주중(평일) 이사를 선택하면 비용 절감에 도움이 됩니다. 군산 지역의 경우 특정 시기에 산업 단지 입주 등으로 수요가 몰릴 수 있으니 미리 확인해야 합니다."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <!-- 스타일: 부드럽고 다채로운 색상, 명확한 계층 구조 -->
+    <style>
+        :root {
+            --primary-color: #007bff; /* 메인 청색 */
+            --secondary-color: #3f51b5; /* 보조 청색 */
+            --accent-color: #ffc107; /* 강조 노란색 */
+            --light-bg-color: #f7f9fc; /* 연한 배경색 */
+            --soft-text-color: #495057; /* 부드러운 텍스트색 */
+            --card-border-radius: 12px;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        /* 기본 설정 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg-color);
+            line-height: 1.8;
+            color: var(--soft-text-color);
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        a { text-decoration: none; color: var(--primary-color); }
+        a:hover { text-decoration: underline; }
+
+        /* 헤더 */
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.1rem;
+            margin: 5px 0 0;
+        }
+
+        /* 메인 콘텐츠 영역 */
+        main {
+            padding: 40px 0;
+        }
+        section {
+            background-color: #ffffff;
+            border-radius: var(--card-border-radius);
+            margin-bottom: 30px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* CTA 섹션 (견적 폼) */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: var(--card-border-radius);
+            margin-bottom: 30px;
+        }
+        .cta-section h2 {
+            color: #ffffff;
+            font-size: 2.8rem;
+            border: none;
+            padding-left: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .cta-button:hover {
+            background-color: #fdd835;
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+        /* 폼 스타일 */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: var(--card-border-radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        form input[type="text"], form input[type="tel"], form select, form input[type="date"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        form .submit-btn {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        form .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* 목록 스타일 */
+        ul { list-style-type: disc; padding-left: 25px; }
+        ol { padding-left: 25px; }
+        li { margin-bottom: 10px; }
+        .feature-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .feature-grid .item {
+            width: calc(33.33% - 20px);
+            background-color: var(--light-bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feature-grid .item h3 {
+            font-size: 1.3rem;
+            margin-top: 10px;
+        }
+        @media (max-width: 768px) {
+            .feature-grid .item { width: 100%; }
+        }
+
+        /* 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 500;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* FAQ 스타일 */
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .faq-item h3 {
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+        }
+        .faq-item h3::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+        .faq-item.active h3::after {
+            content: '-';
+        }
+        .faq-item p {
+            display: none;
+            padding-top: 10px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+        footer .container {
+            border-top: 1px solid #ffffff33;
+            padding-top: 20px;
+        }
+        footer a { color: #ffffff; margin: 0 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>군산포장이사 | 2026년 이사 비용 절약 노하우</h1>
+            <p>군산시 전 지역 (수송동, 나운동, 지곡동, 조촌동 등) 이삿짐센터 비교 견적 서비스</p>
+        </div>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <!-- 견적 요청 CTA 섹션 (가장 중요한 부분) -->
+        <section class="cta-section" id="estimate">
+            <div class="container">
+                <h2>군산포장이사 최저가 견적, 지금 바로 확인하세요!</h2>
+                <p>간편한 정보 입력으로 군산 지역 이삿짐센터 3곳의 맞춤 견적을 무료로 비교해 드립니다.</p>
+                <form id="movingEstimateForm" action="#" method="post">
+                    <h3>이사 정보 입력</h3>
+                    <div class="form-row">
+                        <label for="move_date">이사 희망 날짜</label>
+                        <input type="date" id="move_date" name="move_date" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="from_address">출발지 주소 (군산시)</label>
+                        <input type="text" id="from_address" name="from_address" placeholder="예: 군산시 수송동" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="to_address">도착지 주소</label>
+                        <input type="text" id="to_address" name="to_address" placeholder="예: 군산시 나운동 또는 타지역" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="home_size">이사 평수 / 짐의 양</label>
+                        <select id="home_size" name="home_size" required>
+                            <option value="">-- 선택하세요 --</option>
+                            <option value="1room">원룸 / 1.5룸</option>
+                            <option value="2room">투룸</option>
+                            <option value="20py">20평대 아파트/빌라</option>
+                            <option value="30py">30평대 아파트/빌라</option>
+                            <option value="40py">40평대 이상 아파트/빌라</option>
+                            <option value="storage">소형 짐 / 보관 이사</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="move_type">이사 형태</label>
+                        <select id="move_type" name="move_type" required>
+                            <option value="">-- 선택하세요 --</option>
+                            <option value="packing">포장이사 (포장+정리)</option>
+                            <option value="semi_packing">반포장이사 (포장만)</option>
+                            <option value="general">일반이사 (운반만)</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="name">고객명</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호 (하이픈 제외)" required>
+                    </div>
+                    <button type="submit" class="submit-btn">견적 요청하고 비용 비교하기</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 핵심 서비스 비교 및 정보 제공 섹션 -->
+        <section id="service-info">
+            <div class="container">
+                <h2>군산포장이사 핵심 서비스 비교 분석: 나에게 맞는 이사 방법은?</h2>
+                <p>군산 지역 이삿짐센터들은 포장이사, 반포장이사, 일반이사 등 다양한 옵션을 제공합니다. 각 서비스의 특징과 예상 비용을 정확히 비교하여 합리적인 선택을 도와드립니다.</p>
+
+                <h3>1. 포장이사 (Full-Service Packing Move)</h3>
+                <p>포장이사는 이사의 모든 과정을 이삿짐센터 전문가가 담당하는 프리미엄 서비스입니다. 짐 포장부터 운송, 정리, 청소까지 원스톱으로 처리되어 고객의 시간과 노력을 최소화합니다. 특히 군산의 대규모 아파트 단지나 짐이 많은 가구에 적합합니다.</p>
+                <ul>
+                    <li><strong>특징:</strong> 짐 포장, 운송, 배치, 청소 및 마무리 정리까지 전문가가 전담.</li>
+                    <li><strong>장점:</strong> 고객의 노동력 제로, 파손 위험 최소화, 편리성 극대화.</li>
+                    <li><strong>단점:</strong> 다른 서비스 대비 비용이 높음.</li>
+                    <li><strong>적합 대상:</strong> 맞벌이 부부, 고층 아파트 거주자, 짐이 많은 가구.</li>
+                </ul>
+
+                <h3>2. 반포장이사 (Semi-Packing Move)</h3>
+                <p>반포장이사는 포장이사와 일반이사의 장점을 결합한 합리적인 선택입니다. 포장은 업체에서 진행하지만, 도착지에서의 짐 정리는 고객이 직접 합니다. 포장이사보다 비용이 저렴하면서도 이사 당일의 짐 포장 부담을 덜 수 있습니다.</p>
+                <ul>
+                    <li><strong>특징:</strong> 포장은 업체가, 정리는 고객이 담당.</li>
+                    <li><strong>장점:</strong> 포장이사보다 비용 절감, 이사 당일 부담 감소.</li>
+                    <li><strong>단점:</strong> 고객이 짐 정리에 직접 참여해야 함.</li>
+                    <li><strong>적합 대상:</strong> 비용 절약을 원하지만 포장이 어려운 가구, 짐이 적거나 정리할 시간이 있는 가구.</li>
+                </ul>
+
+                <h3>3. 일반이사 (Standard Move)</h3>
+                <p>일반이사는 고객이 직접 모든 짐을 포장하고 정리하며, 업체는 운반과 배치 작업만 담당합니다. 짐이 적은 원룸이나 이사 거리가 짧은 경우에 적합하며, 비용이 가장 저렴합니다. 군산 지역 내 단거리 이사에 주로 활용됩니다.</p>
+                <ul>
+                    <li><strong>특징:</strong> 고객이 모든 포장 및 정리 담당.</li>
+                    <li><strong>장점:</strong> 가장 저렴한 비용.</li>
+                    <li><strong>단점:</strong> 고객의 노동력 투입이 많음, 짐 파손 위험 증가.</li>
+                    <li><strong>적합 대상:</strong> 짐이 적은 원룸/오피스텔 거주자, 비용 절약을 최우선으로 하는 고객.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 이사 비용 산정 기준 및 절약 팁 섹션 -->
+        <section id="pricing-guide">
+            <div class="container">
+                <h2>군산이사비용 산정 기준 및 2026년 이사 비용 전망</h2>
+                <p>이사 비용은 단순히 짐의 양이나 거리만으로 결정되지 않습니다. 여러 가지 복합적인 요인이 작용하므로 정확한 견적을 받기 위해서는 세부 요소를 꼼꼼히 체크해야 합니다.</p>
+
+                <h3>1. 주요 비용 산정 요소</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>요소</th>
+                            <th>설명</th>
+                            <th>영향</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>짐의 양 (톤/평수)</strong></td>
+                            <td>이사할 짐의 총량. 짐이 많을수록 인력 및 차량 투입 증가.</td>
+                            <td>가장 큰 비용 결정 요인.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>이동 거리</strong></td>
+                            <td>출발지(군산)와 도착지 간의 거리. 거리가 멀면 유류비 및 인건비 증가.</td>
+                            <td>장거리(타 시/도) 이사는 비용 상승폭이 큼.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>작업 인원 및 옵션</strong></td>
+                            <td>작업에 투입되는 인력 수. 에어컨, 벽걸이 TV 설치, 사다리차 등 옵션 포함 여부.</td>
+                            <td>추가 인력/옵션 발생 시 비용 증가.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>이사 날짜 및 시기</strong></td>
+                            <td>이사 수요가 많은 '손 없는 날' 또는 주말은 비용 할증.</td>
+                            <td>비수기 평일 이사 시 비용 절감 가능.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>건물 환경</strong></td>
+                            <td>엘리베이터 유무, 사다리차 사용 가능 여부, 주차 환경.</td>
+                            <td>사다리차 사용이 불가하면 인력 추가 및 비용 증가.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>2. 2026년 군산 이사 비용 전망</h3>
+                <p>2026년 군산 지역의 이사 시장은 인건비 상승과 물가 인상 압력으로 전반적인 비용이 소폭 상승할 것으로 예상됩니다. 특히 주택 시장 불안정 및 금리 변화에 따라 이사 수요가 급증하는 시기에는 비용이 크게 오를 수 있습니다.</p>
+                <p>전문가들은 2026년 이사 계획 시 <strong>최소 2~3개월 전에 미리 견적을 받고 예약하는 것</strong>을 권장합니다. 이는 원하는 날짜에 서비스를 확보하고, 인상된 가격이 적용되기 전 기존 계약을 체결할 수 있기 때문입니다. 특히 군산의 신규 입주 아파트 단지(예: 디오션시티, 나운동 신축)가 있는 경우, 특정 시기에 이사 수요가 폭발적으로 증가할 수 있어 경쟁이 치열할 수 있습니다.</p>
+
+                <h3>3. 군산이사비용 절약 팁 (연간 최대 50만원 절감 전략)</h3>
+                <ol>
+                    <li><strong>짐 정리 및 불필요한 물건 처분:</strong> 이사 전 짐을 최대한 줄이는 것이 가장 확실한 절약 방법입니다. 짐의 양이 줄어들면 차량 크기나 작업 인원수를 줄일 수 있습니다.</li>
+                    <li><strong>비수기 평일 이사:</strong> 이사 수요가 적은 1~2월이나 7~8월 중, '손 없는 날'을 피해 평일로 이사 날짜를 정하면 최소 10~20%의 비용 절감 효과를 볼 수 있습니다.</li>
+                    <li><strong>이사 서비스 종류 선택:</strong> 짐이 적거나 시간이 허락한다면 포장이사 대신 반포장이사 또는 일반이사를 고려해 보세요.</li>
+                    <li><strong>여러 업체 비교 견적:</strong> 군산 지역의 3~4개 이삿짐센터로부터 직접 견적을 받아 비교하는 것이 필수입니다. 업체마다 서비스 내용과 가격이 다르므로, 이 과정에서 숨겨진 비용을 확인하고 불필요한 옵션을 제외할 수 있습니다.</li>
+                    <li><strong>사다리차 및 주차 공간 확보:</strong> 이사 당일 사다리차 사용이 원활하고 주차 공간이 미리 확보되어 있으면 추가 비용 발생을 막을 수 있습니다.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 군산 지역별 이사 특징 섹션 -->
+        <section id="local-guide">
+            <div class="container">
+                <h2>군산 지역 이사 가이드: 지역별 특징과 이사 노하우</h2>
+                <p>군산시는 동 지역과 읍면 지역의 특성이 다르고, 신도심과 구도심의 주거 환경이 상이합니다. 군산포장이사 업체 선정 시 지역별 특성을 고려해야 원활한 이사가 가능합니다.</p>
+
+                <h3>1. 군산시 주요 지역별 이사 환경 분석</h3>
+                <ul>
+                    <li><strong>수송동, 나운동 (신도심):</strong> 대규모 아파트 단지가 밀집되어 있어 엘리베이터나 사다리차 이용이 필수적입니다. 이사 수요가 가장 많은 지역이며, 주차 공간 확보가 중요합니다.</li>
+                    <li><strong>지곡동, 조촌동 (신규 개발 지역):</strong> 최근 신축 아파트 입주가 활발한 지역입니다. 입주 기간이 겹치는 경우 이사 날짜 경쟁이 치열하며, 업체 선택 폭이 좁아질 수 있습니다.</li>
+                    <li><strong>구암동, 경암동 (구도심):</strong> 주택가와 좁은 골목길이 많아 사다리차 이용이 어렵거나 인력 투입이 많아질 수 있습니다. 이 경우 반포장이사나 일반이사를 선호하는 경향이 있습니다.</li>
+                </ul>
+
+                <h3>2. 군산포장이사 업체 선정 시 유의사항</h3>
+                <ol>
+                    <li><strong>정식 허가 업체 확인:</strong> 관할 시청에 정식으로 등록된 이삿짐센터인지 확인합니다. (화물자동차운송주선사업 허가증 보유 여부)</li>
+                    <li><strong>피해보상 보험 가입 여부:</strong> 운송 중 발생할 수 있는 짐 파손에 대비하여 '적재물 배상 책임 보험'에 가입된 업체인지 확인합니다.</li>
+                    <li><strong>현장 방문 견적 필수:</strong> 전화 견적은 정확하지 않습니다. 군산 이삿짐센터 전문가가 직접 방문하여 짐 양, 건물 환경 등을 확인해야 정확한 견적을 받을 수 있습니다.</li>
+                    <li><strong>계약서 작성:</strong> 견적서에 명시된 모든 서비스 항목(인원, 차량, 옵션)을 반드시 계약서에 기재하고, 추가 비용이 발생할 수 있는 조건(사다리차 비용, 에어컨 탈부착 등)을 명확히 합니다.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- FAQ 섹션 -->
+        <section id="faq">
+            <div class="container">
+                <h2>자주 묻는 질문 (FAQ)</h2>
+
+                <div class="faq-item">
+                    <h3>Q. 군산포장이사 업체는 언제 예약하는 것이 가장 좋나요?</h3>
+                    <p>A. 이사 날짜가 확정되었다면 빠를수록 좋습니다. 특히 '손 없는 날'이나 주말은 최소 1~2개월 전에 예약해야 원하는 업체를 선정할 수 있습니다. 2026년 이사 계획이라면 최소 3개월 전에 문의하는 것이 안전합니다. 비수기 평일이라면 2주~1달 전에도 충분합니다.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q. 이사 도중 짐 파손이 발생하면 어떻게 해야 하나요?</h3>
+                    <p>A. 이사 당일 짐 정리가 완료된 후 짐 파손 여부를 반드시 확인해야 합니다. 파손된 짐이 있다면 현장에서 즉시 담당자에게 알리고 사진을 찍어 증거를 확보해야 합니다. 업체가 '적재물 배상 책임 보험'에 가입되어 있다면 보험 처리를 통해 보상받을 수 있습니다.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q. 이사 견적 시 방문 견적이 필수인가요?</h3>
+                    <p>A. 네, 정확한 이사 비용 산정을 위해 방문 견적을 받는 것이 좋습니다. 전화나 온라인 견적은 짐 양을 정확히 파악하기 어려워 이사 당일 추가 비용이 발생할 가능성이 높습니다. 군산포장이사 전문 업체들은 대부분 무료 방문 견적 서비스를 제공하므로 반드시 활용하세요.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Q. 이사 시 발생하는 폐기물 처리도 업체에서 해주나요?</h3>
+                    <p>A. 일반적으로 이삿짐센터는 이사 후 발생하는 생활 폐기물이나 가구 폐기물을 직접 처리해 주지 않습니다. 폐기물 처리는 고객이 직접 관할 지자체에 신고하고 수거를 요청해야 합니다. 다만, 일부 프리미엄 서비스 업체는 폐기물 처리 대행 옵션을 유료로 제공하기도 합니다.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 연관 키워드 및 추가 정보 섹션 -->
+        <section id="related-keywords">
+            <div class="container">
+                <h2>함께 많이 찾는 키워드 (군산 지역 이사 관련)</h2>
+                <div class="feature-grid keyword-links">
+                    <div class="item"><a href="#estimate">#군산용달이사</a></div>
+                    <div class="item"><a href="#estimate">#군산원룸이사</a></div>
+                    <div class="item"><a href="#estimate">#군산이사비용견적</a></div>
+                    <div class="item"><a href="#estimate">#군산포장이사추천</a></div>
+                    <div class="item"><a href="#estimate">#군산이삿짐센터가격</a></div>
+                    <div class="item"><a href="#estimate">#수송동포장이사</a></div>
+                    <div class="item"><a href="#estimate">#나운동이삿짐센터</a></div>
+                    <div class="item"><a href="#estimate">#지곡동이사</a></div>
+                    <div class="item"><a href="#estimate">#이사체크리스트</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 신뢰성 있는 외부 자료 섹션 -->
+        <section id="external-info">
+            <div class="container">
+                <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+                <p>소비자 피해 예방 및 이사 관련 법규를 확인하여 안전한 이사 서비스를 이용하세요.</p>
+                <ul>
+                    <li><a href="https://www.kca.go.kr/index.do" target="_blank" rel="noopener">한국소비자원: 이사 서비스 관련 소비자 피해 예방 가이드</a></li>
+                    <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%ED%99%94%EB%AC%BC%EC%9A%B4%EC%86%A1%EC%A3%BC%EC%84%A0%EC%82%AC%EC%97%85%EB%B2%95" target="_blank" rel="noopener">화물자동차 운수사업법: 이삿짐센터 허가 관련 법령 정보</a></li>
+                    <li><a href="https://www.namu.wiki/w/%EC%9D%B4%EC%82%AC%EC%A7%90%EC%84%BC%ED%84%B0" target="_blank" rel="noopener">나무위키: 이삿짐센터 관련 정보 및 소비자 유의사항</a></li>
+                    <li><a href="https://www.gunsan.go.kr/main/index.do" target="_blank" rel="noopener">군산시청 공식 웹사이트: 지역 정보 및 폐기물 처리 안내</a></li>
+                    <li><a href="https://www.mcst.go.kr/kor/s_policy/transport/trans/trans02/index.jsp" target="_blank" rel="noopener">국토교통부: 이사 서비스 관련 표준약관</a></li>
+                </ul>
+            </div>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <footer>
+        <div class="container">
+            <p><strong>군산포장이사 비교 서비스</strong> &copy; 2025 All Rights Reserved.</p>
+            <p>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+                <a href="#">광고 및 제휴 문의</a>
+            </p>
+            <p>본 사이트는 군산 지역 이삿짐센터 정보를 제공하며, 실제 계약은 고객과 업체 간의 직접 거래로 이루어집니다.</p>
+        </div>
+    </footer>
+
+    <!-- 자바스크립트: FAQ 토글 기능 및 폼 처리 예시 -->
+    <script>
+        // FAQ 토글 기능
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 폼 제출 시 알림 (실제 데이터 전송 기능은 백엔드 구현 필요)
+        document.getElementById('movingEstimateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('견적 요청이 접수되었습니다. 곧 담당자가 연락드리겠습니다.');
+        });
+    </script>
+
+  
